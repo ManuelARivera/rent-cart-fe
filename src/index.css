@@ -7,6 +7,9 @@
   font-family: "Open Sans", sans-serif;
 }
 
+body {}
+
+
 .container-blue {
   background-color: #F5F6F7;
 }
@@ -52,17 +55,24 @@
   align-items: center;
   padding: 8px;
   max-width: 1300px;
+  width: 100%;
   margin: auto;
+}
+
+.css-onkibi {
+  display: none !important;
 }
 
 .logo-header {
   width: 200px;
   object-fit: cover;
+  margin-left: 5%;
 }
 
 .nav-container {
   display: flex;
   gap: 28px;
+  margin-right: 5%;
 
   >a {
     text-decoration: none;
@@ -82,14 +92,16 @@
   align-items: center;
   padding: 28px 0;
   gap: 52px;
-  height: 100vh;
+  /*height: 975px;*/
+  height: autp;
 
   >h1 {
     text-align: center;
     max-width: 600px;
-    font-size: 52px;
+    font-size: 50px;
     font-weight: 500;
     color: #002f6d;
+    padding: 0 25px;
   }
 
   >.img-home {
@@ -132,7 +144,6 @@
   justify-content: space-between;
   align-items: center;
   max-width: 1300px;
-
   gap: 104px;
 }
 
@@ -230,8 +241,9 @@
   align-items: center;
   justify-content: space-between;
   color: #ffffff;
-  padding: 100px 0;
+  padding: 100px;
   max-width: 1300px;
+  gap: 40px;
   margin: auto;
 }
 
@@ -280,7 +292,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px 0;
+  padding: 100px;
 }
 
 .About-us-child-conteiner {
@@ -288,7 +300,6 @@
   gap: 5%;
   max-width: 1000px;
   margin-top: auto;
-  background-color: #15C1FF;
 }
 
 .title-about-us-conteiner {
@@ -301,7 +312,6 @@
 
 .content-about-us-conteiner {
   width: 65%;
-  margin: 40px 0;
 
   >p {
     font-size: 1vw;
@@ -314,7 +324,7 @@
   justify-content: center;
   align-items: center;
   padding: 60px 0;
-  background-color: #15C1FF;
+
 }
 
 .contact-child-conteiner {
@@ -328,7 +338,6 @@
   >h1 {
     text-align: right;
     font-size: 2vw;
-    color: #002f6d;
   }
 }
 
@@ -351,9 +360,10 @@
 
     >label {
       font-size: 16px;
-      /* width: 100px; */
+      width: 100px;
       font-weight: 500;
       padding-top: 4px;
+      color: #4b4b4c;
     }
 
     >input,
@@ -361,8 +371,7 @@
       font-size: 16px;
       padding: 4px;
       width: 100%;
-      border-radius: 4px;
-      border: none;
+      border-radius: 12px;
     }
 
     >textarea {
@@ -371,10 +380,78 @@
   }
 }
 
-@media (max-width:800px) {
+@media (max-width:1024px) {
+  .slogan-conteiner {
+    /*height: 650px;*/
+
+    >.img-home {
+      width: 58%;
+    }
+  }
+}
+
+@media (max-width:768px) {
+
+  .hamburgericon-container {
+    margin-right: 5%;
+  }
+
+  .css-onkibi {
+    color: #15C1FF !important;
+    font-size: 36px;
+    display: inline !important;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: center !important;
+    position: fixed;
+    right: 0;
+    top: 57px;
+    width: 100%;
+    padding: 20px 0;
+    left: 100%;
+    transition: left 0.3s;
+    overflow-y: auto;
+    opacity: 0.9;
+
+    background-color: #15C1FF;
+
+    >a {
+      font-size: 12px;
+      color: #4b4b4c !important;
+
+      &:hover {
+        color: #ffffff !important;
+      }
+    }
+  }
+
+  logo-header {
+    width: 150px;
+  }
+
+  .nav-container_visible {
+    left: 0;
+  }
+
+  .slogan-conteiner {
+    >.img-home {
+      width: 68%;
+    }
+
+    >button {
+      font-size: 22px;
+    }
+  }
+
+  .child-sevice-conteiner {
+    flex-direction: column;
+    gap: 0;
+  }
+
   .About-us-child-conteiner {
     flex-direction: column;
-    gap: 0px;
   }
 
   .title-about-us-conteiner {
@@ -383,20 +460,151 @@
 
     >h1 {
       text-align: center;
-      flex-grow: 1;
-      font-size: 6vw
+      font-size: 8vw
     }
 
   }
 
   .content-about-us-conteiner {
+    >p {
+      font-size: 12px !important;
+      padding: 12px;
+    }
+  }
+
+  .content-about-us-conteiner {
     width: 100%;
-    padding: 20px;
+    margin-top: auto;
 
     >p {
       text-align: center;
-      flex-grow: 1;
-      font-size: 3vw
+      font-size: 2vw;
+    }
+  }
+
+  .contact-child-conteiner {
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .form {
+    display: block;
+
+    >div {
+      margin-bottom: 16px;
+    }
+  }
+
+  .footer-conteiner {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    background-color: black;
+    padding: auto;
+  }
+
+  .information-rentacar-footer {
+    align-items: center;
+
+    >p {
+      text-align: center;
+      font-size: 12px;
+      padding: 12px;
+    }
+  }
+
+  .information-contact-footer {
+    align-items: center;
+
+    >h3 {
+      font-size: 24px;
+    }
+
+    >.icrac {
+      align-items: center;
+      font-size: 12px;
+    }
+  }
+
+  .social-networks-conteiner {
+    >img {
+      width: 20px;
+      height: auto;
+    }
+  }
+}
+
+@media (max-width:425px) {
+  .logo-header {
+    width: 190px;
+  }
+
+  .css-onkibi {
+    font-size: 34px;
+  }
+
+  .slogan-conteiner {
+    >h1 {
+      font-size: 32px;
+    }
+
+    >.img-home {
+      width: 78%;
+    }
+
+    >button {
+      font-size: 18px;
+    }
+  }
+
+  .About-us-conteiner {
+    padding: 10px;
+  }
+}
+
+@media (max-width:375px) {
+
+  .logo-header {
+    width: 170px;
+  }
+
+  .css-onkibi {
+    font-size: 32px;
+  }
+
+  .slogan-conteiner {
+    >h1 {
+      max-width: 600px;
+      font-size: 30px;
+    }
+
+    >.img-home {
+      width: 88%;
+    }
+
+    >button {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width:320px) {
+  .logo-header {
+    width: 150px;
+  }
+
+  .css-onkibi {
+    font-size: 30px;
+  }
+
+  .slogan-conteiner {
+    >h1 {
+      font-size: 25px;
+    }
+
+    >button {
+      font-size: 12px;
     }
   }
 }
