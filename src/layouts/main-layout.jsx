@@ -34,7 +34,7 @@ export const MainLayout = () => {
                         <Link onClick={handleHamburgerClick} to='/'>INICIO</Link>
                         <Link onClick={handleHamburgerClick} to='/about_us'>NOSOTROS</Link>
                         <Link onClick={handleHamburgerClick} to='/our_fleet'>VEHICULOS</Link>
-                        <Link onClick={handleHamburgerClick} to='/contact'>CONTACTO</Link>
+                        <Link onClick={handleHamburgerClick} to='/contact'>CONTACTONOS</Link>
                     </div>
                 </div>
             </div>
