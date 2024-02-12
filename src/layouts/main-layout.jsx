@@ -31,10 +31,10 @@ export const MainLayout = () => {
                         <HamburgerIcon onClick={handleHamburgerClick} />
                     </div>
                     <div className={classNameVisible}>
-                        <Link to='/'>INICIO</Link>
-                        <Link to='/about_us'>NOSOTROS</Link>
-                        <Link to='/our_fleet'>VEHICULOS</Link>
-                        <Link to='/contact'>CONTACTO</Link>
+                        <Link onClick={handleHamburgerClick} to='/'>INICIO</Link>
+                        <Link onClick={handleHamburgerClick} to='/about_us'>NOSOTROS</Link>
+                        <Link onClick={handleHamburgerClick} to='/our_fleet'>VEHICULOS</Link>
+                        <Link onClick={handleHamburgerClick} to='/contact'>CONTACTO</Link>
                     </div>
                 </div>
             </div>

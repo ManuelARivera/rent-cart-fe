@@ -10,7 +10,7 @@ export const Home = () => {
                 <div className='slogan-conteiner'>
                     <h1>Explora, vive... tu viaje, tu libertad</h1>
                     <img className='img-home' src='/images/cr-v.png' />
-                    <button>RENT a CAR</button>
+                    <button>RENT A CAR</button>
                 </div>
             </div>
             <Service />

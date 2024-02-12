@@ -130,7 +130,7 @@ body {}
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 48px 0;
+  padding: 50px 30px;
   gap: 60px;
 
   >h2 {
@@ -174,7 +174,7 @@ body {}
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 0;
+  padding: 50px 30px;
   gap: 40px;
 
   >h2 {
@@ -238,10 +238,10 @@ body {}
 
 .footer-conteiner {
   display: flex;
-  align-items: center;
+  /*align-items: center;*/
   justify-content: space-between;
   color: #ffffff;
-  padding: 100px;
+  padding: 50px 100px;
   max-width: 1300px;
   gap: 40px;
   margin: auto;
@@ -382,11 +382,18 @@ body {}
 
 @media (max-width:1024px) {
   .slogan-conteiner {
-    /*height: 650px;*/
-
     >.img-home {
       width: 58%;
     }
+  }
+
+  .information-contact-footer {
+    text-align: center;
+  }
+
+  .information-rentacar-footer {
+    align-items: center;
+    text-align: center;
   }
 }
 
@@ -505,7 +512,6 @@ body {}
   }
 
   .information-rentacar-footer {
-    align-items: center;
 
     >p {
       text-align: center;
@@ -515,7 +521,6 @@ body {}
   }
 
   .information-contact-footer {
-    align-items: center;
 
     >h3 {
       font-size: 24px;
@@ -555,6 +560,27 @@ body {}
 
     >button {
       font-size: 18px;
+    }
+  }
+
+  .service-conteiner {
+    gap: 40px;
+
+    >h2 {
+      font-size: 22px;
+    }
+  }
+
+  .servicechild-conteiner {
+    >img {
+      width: 70px;
+    }
+  }
+
+  .container-blue-tow {
+    >h2 {
+      color: #002f6d;
+      text-align: center;
     }
   }
 
@@ -605,6 +631,14 @@ body {}
 
     >button {
       font-size: 12px;
+    }
+  }
+
+  .form {
+
+    input,
+    textarea {
+      width: 0;
     }
   }
 }
