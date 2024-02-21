@@ -20,7 +20,7 @@ export const Footer = () => {
                     <div className='icrac'>
                         <span> amaurisrentacar@gmail.com</span>
                         <span> Santo Domingo, Republica Dominicana</span>
-                        <span> Lunes - Lunes 24/7</span>
+                        <span> Lunes - Domingo 24/7</span>
                         <div className='social-networks-conteiner'>
                             <img src='/images/facebook.png' />
                             <img src='/images/instagram.png' />

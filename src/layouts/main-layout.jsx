@@ -12,32 +12,29 @@ export const MainLayout = () => {
     }
 
     const classNameVisible = isNavVisible ? 'nav-container nav-container_visible' : 'nav-container';
-
-    const imgBgClass = location.pathname === '/about_us' ? 'about-us-nav' : location.pathname === '/contact' ? 'contact-nav' : 'our_fleet-nav'
-    console.log(imgBgClass)
-    const className = location.pathname === '/' ? 'container-blue' : `container-image ${imgBgClass}`
-    const imgSrc = location.pathname === '/' ? '/images/logo.png' : '/images/logo-footer.png'
-
-
-
+    const imgBgClass = location.pathname === '/about_us' ? 'about-us-nav' : 'contact-nav'
+    const className = location.pathname === '/' ? 'container-blue' : location.pathname === '/our_fleet' ? '' : `container-image ${imgBgClass}`
+    const imgSrc = location.pathname === '/' ? '/images/logo.png' : location.pathname === '/our_fleet' ? '' : '/images/logo-footer.png'
 
 
     return (
         <>
-            <div className={className}>
-                <div className='header-container'>
-                    <img className='logo-header' src={imgSrc} />
-                    <div className='hamburgericon-container'>
-                        <HamburgerIcon onClick={handleHamburgerClick} />
-                    </div>
-                    <div className={classNameVisible}>
-                        <Link onClick={handleHamburgerClick} to='/'>INICIO</Link>
-                        <Link onClick={handleHamburgerClick} to='/about_us'>NOSOTROS</Link>
-                        <Link onClick={handleHamburgerClick} to='/our_fleet'>VEHICULOS</Link>
-                        <Link onClick={handleHamburgerClick} to='/contact'>CONTACTONOS</Link>
+            {location.pathname !== '/our_fleet' && (
+                <div className={className}>
+                    <div className='header-container'>
+                        <img className='logo-header' src={imgSrc} />
+                        <div className='hamburgericon-container'>
+                            <HamburgerIcon onClick={handleHamburgerClick} />
+                        </div>
+                        <div className={classNameVisible}>
+                            <Link onClick={handleHamburgerClick} to='/'>INICIO</Link>
+                            <Link onClick={handleHamburgerClick} to='/about_us'>NOSOTROS</Link>
+                            <Link onClick={handleHamburgerClick} to='/our_fleet'>VEHICULOS</Link>
+                            <Link onClick={handleHamburgerClick} to='/contact'>CONTACTONOS</Link>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
             <Outlet />
             <Footer />
         </>

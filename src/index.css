@@ -14,6 +14,7 @@ body {}
   background-color: #F5F6F7;
 }
 
+
 .container-image {
   height: 506px;
 
@@ -31,12 +32,6 @@ body {}
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/about-us.jpg") no-repeat;
   background-size: cover;
   background-position: center;
-}
-
-.our_fleet-nav {
-  background: url("/images/about-us.jpg") no-repeat;
-  background-size: cover;
-  background-position: bottom;
 }
 
 .contact-nav {
@@ -57,6 +52,8 @@ body {}
   max-width: 1300px;
   width: 100%;
   margin: auto;
+  overflow: hidden;
+  position: relative;
 }
 
 .css-onkibi {
@@ -64,12 +61,29 @@ body {}
 }
 
 .logo-header {
-  width: 200px;
+  width: 300px;
   object-fit: cover;
   margin-left: 5%;
 }
 
 .nav-container {
+  display: flex;
+  gap: 28px;
+  margin-right: 5%;
+
+  >a {
+    text-decoration: none;
+    color: #4b4b4c;
+    transition: 0.2s color ease-in-out;
+    font-size: 16px;
+
+    &:hover {
+      color: #15C1FF;
+    }
+  }
+}
+
+.nav-container2 {
   display: flex;
   gap: 28px;
   margin-right: 5%;
@@ -93,7 +107,7 @@ body {}
   padding: 28px 0;
   gap: 52px;
   /*height: 975px;*/
-  height: autp;
+  height: auto;
 
   >h1 {
     text-align: center;
@@ -236,9 +250,283 @@ body {}
   }
 }
 
+/*.ourfleet-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #4b4b4c;
+  height: 975px;
+  margin: auto;
+}*/
+
+/*.ourfleet-nav-container {
+  display: flex;
+  gap: 28px;
+
+  >a {
+    text-decoration: none;
+    color: #4b4b4c;
+    transition: 0.2s color ease-in-out;
+    font-size: 16px;
+
+    &:hover {
+      color: #15C1FF;
+    }
+  }
+}
+
+.ourfleet-nav-container {
+  display: flex;
+  gap: 28px;
+
+  >a {
+    text-decoration: none;
+    color: #4b4b4c;
+    transition: 0.2s color ease-in-out;
+    font-size: 16px;
+
+    &:hover {
+      color: #15C1FF;
+    }
+  }
+}
+
+.ourfleet-filter-container {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+  background-color: #fff;
+  max-width: 1300px;
+  padding: 50px 70px;
+  gap: 50px;
+
+  .logo-link {
+    display: block;
+  }
+
+  .logo-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    
+  }
+}
+.filter-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .filter-image {
+    width: 20px;
+  }
+}*/
+
+.ourfleet-container {
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-template-rows: 100px auto;
+  background-color: #4b4b4c;
+  height: 975px;
+  margin: auto;
+}
+
+.logo-link {
+  display: flex;
+  grid-row: 1;
+  grid-column: 1;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+
+}
+
+.logo-image {
+  width: 100%;
+  height: auto;
+  padding: 30px 20px 5px 20px;
+}
+
+.ourfleet-nav-container {
+  display: flex;
+  grid-row: 1;
+  grid-column: 2;
+
+}
+
+.ourfleet-filter-container {
+  display: flex;
+  grid-row: 2;
+  grid-column: 1;
+  flex-direction: column;
+  width: 100%;
+  height: 874px;
+  background-color: #fff;
+  max-width: 1300px;
+  padding: 30px 30px;
+  gap: 50px;
+
+  .logo-link {
+    display: block;
+  }
+
+  .logo-image {
+    width: 100%;
+    height: auto;
+    display: block;
+
+  }
+}
+
+.ourfleet-car-container {
+  display: grid;
+  grid-row: 2;
+  grid-column: 2;
+  gap: 1rem;
+  padding: 30px 16px;
+  /* grid-auto-rows: 22rem; */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  width: 100%;
+  height: 874px;
+  background-color: #F5F6F7;
+  overflow-y: auto;
+
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+
+  >h3 {
+    font-size: 24px
+  }
+
+  .filter-image {
+    width: 20px;
+  }
+}
+
+.ourfleet-filter-car-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.radiobuttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding-bottom: 20px;
+
+  >h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  >label {
+    margin-right: 10px;
+  }
+}
+
+/*.ourfleet-navbar-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 50px;
+  background-color: #F5F6F7;
+}*/
+.ourfleet-navbar-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 50px;
+  background-color: #F5F6F7;
+}
+
+
+
+.our-fleetchild-container {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  gap: 10px;
+  border-radius: 16px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.10);
+
+  .price-rent-btn-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.brand-container {
+  font-size: 100%;
+  color: #002f6d;
+
+}
+
+.alok {
+  display: flex;
+  align-items: center;
+  gap: 12PX;
+}
+
+.passengers-container {
+  display: flex;
+  align-items: center;
+  color: #4b4b4c;
+  font-size: 12px;
+
+  >img {
+    height: auto;
+    width: 17px;
+    border-radius: 3px;
+    margin-right: 5px;
+
+  }
+}
+
+.car-image-container {
+  margin: 20px 0 10px;
+  width: 100%;
+  padding: 0 10px;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+}
+
+.mileage-container {
+  color: #4b4b4c;
+}
+
+.price-container {
+  font-size: 150%;
+  font-weight: 1000;
+  color: #002f6d;
+}
+
+.price-container+button {
+  font-weight: 500;
+
+  &:hover {
+    background-color: #002f6d;
+  }
+}
+
+
+button {
+  background-color: #15C1FF;
+  color: white;
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+}
+
 .footer-conteiner {
   display: flex;
-  /*align-items: center;*/
   justify-content: space-between;
   color: #ffffff;
   padding: 50px 100px;
@@ -380,6 +668,27 @@ body {}
   }
 }
 
+.select-container {
+  display: none;
+  gap: 20px;
+  flex-direction: row;
+  overflow-x: auto;
+  width: 1000px;
+}
+
+.carTypes,
+.transmission {
+  background-color: #15C1FF;
+  border-radius: 8px;
+  width: 100px;
+}
+
+@media(max-width:1440) {
+  .ourfleet-navbar-container {
+    max-width: 1300px;
+  }
+}
+
 @media (max-width:1024px) {
   .slogan-conteiner {
     >.img-home {
@@ -399,6 +708,14 @@ body {}
 
 @media (max-width:768px) {
 
+  .select-container {
+    display: flex;
+  }
+
+  .filters-desktop {
+    display: none;
+  }
+
   .hamburgericon-container {
     margin-right: 5%;
   }
@@ -406,13 +723,14 @@ body {}
   .css-onkibi {
     color: #15C1FF !important;
     font-size: 36px;
+
     display: inline !important;
   }
 
   .nav-container {
     flex-direction: column;
     align-items: center !important;
-    position: fixed;
+    position: absolute;
     right: 0;
     top: 57px;
     width: 100%;
@@ -420,12 +738,35 @@ body {}
     left: 100%;
     transition: left 0.3s;
     overflow-y: auto;
-    opacity: 0.9;
 
-    background-color: #15C1FF;
+    background-color: #15c1fff5;
 
     >a {
-      font-size: 12px;
+      font-size: 14px;
+      color: #4b4b4c !important;
+
+      &:hover {
+        color: #ffffff !important;
+      }
+    }
+  }
+
+  .nav-container2 {
+    flex-direction: column;
+    align-items: center !important;
+    position: absolute;
+    right: 0;
+    top: 220px;
+    width: 100%;
+    padding: 20px 0;
+    left: 100%;
+    transition: left 0.3s;
+    overflow-y: auto;
+
+    background-color: #15c1fff5;
+
+    >a {
+      font-size: 14px;
       color: #4b4b4c !important;
 
       &:hover {
@@ -440,6 +781,11 @@ body {}
 
   .nav-container_visible {
     left: 0;
+  }
+
+  .nav-container_visible2 {
+    left: 0;
+    top: 220px;
   }
 
   .slogan-conteiner {
@@ -537,6 +883,27 @@ body {}
       width: 20px;
       height: auto;
     }
+  }
+
+  .ourfleet-container {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .ourfleet-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .ourfleet-filter-container,
+  .ourfleet-navbar-container {
+    width: 100%;
+  }
+
+  .ourfleet-filter-container {
+    padding: 10px 30px;
+    height: 100px;
   }
 }
 

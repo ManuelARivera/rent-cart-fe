@@ -25,7 +25,7 @@ export const Service = () => {
                 className: 'image_service'
             },
             title: 'Servicio',
-            text: 'Destar por un servicio excepcional, brindando experiencias de alquiler seguras y fiables en todo momento.'
+            text: 'Destacar por un servicio excepcional, brindando experiencias de alquiler seguras y fiables en todo momento.'
         }
     ];
 

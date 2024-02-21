@@ -5,6 +5,7 @@ import { MainLayout } from "./layouts/main-layout";
 import { Home } from "./views/home";
 import { About_us } from "./views/about_us";
 import { Contact } from "./views/contact";
+import { Our_fleet } from "./views/our_fleet/our_fleet";
 
 export const router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "our_fleet",
-                element: <h1> Hla </h1>,
+                element: <Our_fleet name={"Our Fleet Page"} />
             },
             {
                 path: "contact",
