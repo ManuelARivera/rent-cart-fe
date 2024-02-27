@@ -2,14 +2,11 @@ import React, { useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { Footer } from '../components/footer'
 import { HamburgerIcon } from '@chakra-ui/icons'
+import { useAppConext } from '../hooks/useAppContext'
 
 export const MainLayout = () => {
+    const { handleHamburgerClick, isNavVisible } = useAppConext()
     const location = useLocation()
-    const [isNavVisible, setNavVisible] = useState(false);
-
-    const handleHamburgerClick = () => {
-        setNavVisible(!isNavVisible);
-    }
 
     const classNameVisible = isNavVisible ? 'nav-container nav-container_visible' : 'nav-container';
     const imgBgClass = location.pathname === '/about_us' ? 'about-us-nav' : 'contact-nav'

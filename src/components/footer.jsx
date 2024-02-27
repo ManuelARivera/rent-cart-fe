@@ -1,9 +1,10 @@
 import React from 'react'
+import { useAppConext } from '../hooks/useAppContext'
 
 export const Footer = () => {
-
+    const { handleHamburgerClickOff } = useAppConext();
     return (
-        <div className='container-dark-blue'>
+        <div onClick={handleHamburgerClickOff} className='container-dark-blue'>
             <div className='footer-conteiner '>
                 <div className='information-rentacar-footer'>
                     <img src='/images/logo-footer.png' />

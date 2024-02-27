@@ -1,9 +1,10 @@
 import React from 'react'
+import { useAppConext } from '../../hooks/useAppContext'
 
 export const About_us = () => {
+    const { handleHamburgerClickOff } = useAppConext();
     return (
-
-        <div className='About-us-conteiner'>
+        <div onClick={handleHamburgerClickOff} className='About-us-conteiner'>
             <div className='About-us-child-conteiner'>
                 <div className='title-about-us-conteiner'>
                     <h1>Nosotros</h1>

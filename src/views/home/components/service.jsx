@@ -1,7 +1,9 @@
 import React from 'react';
 import { ServiceChild } from './serviceChild';
+import { useAppConext } from '../../../hooks/useAppContext';
 
 export const Service = () => {
+    const { handleHamburgerClickOff } = useAppConext();
     const serviceChildData = [
         {
             img: {
@@ -31,7 +33,7 @@ export const Service = () => {
 
     return (
         <>
-            <div className='service-conteiner'>
+            <div onClick={handleHamburgerClickOff} className='service-conteiner'>
                 <h2>Nuestra misión</h2>
                 <div className='child-sevice-conteiner'>
                     {serviceChildData.map((data, index) => (

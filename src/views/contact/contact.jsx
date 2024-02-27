@@ -1,8 +1,10 @@
 import React from 'react'
+import { useAppConext } from '../../hooks/useAppContext'
 
 export const Contact = () => {
+    const { handleHamburgerClickOff } = useAppConext()
     return (
-        <div className='contact-conteiner'>
+        <div onClick={handleHamburgerClickOff} className='contact-conteiner'>
             <div className='contact-child-conteiner'>
                 <div className='title-contact-conteiner'>
                     <h1>Contactanos</h1>

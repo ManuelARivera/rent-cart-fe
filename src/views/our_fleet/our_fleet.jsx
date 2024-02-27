@@ -1,34 +1,54 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { Our_fleetChild } from './our_fleetChild'
+import { useAppConext } from '../../hooks/useAppContext'
 
 
 
 export const Our_fleet = () => {
-
-    const [isNavVisible, setNavVisible] = useState(false);
+    const [cars, setCars] = useState(arr)
+    const { handleHamburgerClick, handleHamburgerClickOff, isNavVisible } = useAppConext()
     const [selectedCarTypes, setselectedCarTypes] = useState('');
     const [selectedTransmission, setselectedTransmission] = useState('');
 
-    const carTypes = Array.from(new Set(arr.map(ar => ar.carType)));
-    const Transmissions = Array.from(new Set(arr.map(ar => ar.transmission)));
+    const { carTypes, transmissions } = useMemo(
+        () => {
+            const addedCarTypes = {}
+            const addedTransmissions = {}
+            const transmissions = []
+            const carTypes = []
 
-    const filteredCars = arr.filter(car => {
+            for (const car of cars) {
+                console.log("ME renderizo")
+
+                if (!addedTransmissions[car.transmission]) {
+                    transmissions.push(car.transmission)
+                    addedTransmissions[car.transmission] = 1
+                }
+
+                if (!addedCarTypes[car.carType]) {
+                    carTypes.push(car.carType)
+                    addedCarTypes[car.carType] = 1
+                }
+            }
+
+
+            return {
+                carTypes,
+                transmissions
+            }
+        },
+        [cars]
+    );
+
+    const filteredCars = useMemo(() => cars.filter(car => {
+        console.log("gmail")
         const carTypeMatch = selectedCarTypes === '' || car.carType === selectedCarTypes;
         const transmissionMatch = selectedTransmission === '' || car.transmission === selectedTransmission;
 
         return carTypeMatch && transmissionMatch;
-    });
-
-
-    const handleHamburgerClick = () => {
-        setNavVisible(!isNavVisible);
-    }
-
-    const handleHamburgerClickOff = () => {
-        setNavVisible(false);
-    }
+    }), [cars, selectedCarTypes, selectedTransmission])
 
     const classNameVisible = isNavVisible ? 'nav-container2 nav-container_visible2' : 'nav-container2';
 
@@ -96,7 +116,7 @@ export const Our_fleet = () => {
                                 />
                                 Todas
                             </label>
-                            {Transmissions.map((Transmission, index) => (
+                            {transmissions.map((Transmission, index) => (
                                 <label key={index}>
                                     <input
                                         type="radio"
@@ -129,7 +149,7 @@ export const Our_fleet = () => {
                                 onChange={(e) => setselectedTransmission(e.target.value)}
                             >
                                 <option value="">Marchas</option>
-                                {Transmissions.map((Transmission, index) => (
+                                {transmissions.map((Transmission, index) => (
                                     <option key={index} value={Transmission}>{Transmission}</option>
                                 ))}
                             </select>
