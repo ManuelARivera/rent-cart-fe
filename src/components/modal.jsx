@@ -1,17 +1,36 @@
-import React, { useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom"
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { TimeField } from '@mui/x-date-pickers/TimeField';
-import dayjs from 'dayjs';
 import { Stepper } from 'react-form-stepper';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { UserDataForm } from './user-data-form';
+import { DateDataForm } from './date-data-form';
+import { CarDataForm } from './car-data-form';
+
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import dayjs from 'dayjs';
+
+const FormContext = createContext({
+    value: {},
+    update: () => { }
+})
+
+export const useFormContext = () => {
+    return useContext(FormContext)
+}
 
 
-export const Modals = () => {
+
+export const Modals = ({ closeModal, isVisible }) => {
+    const [formValues, setFormValues] = useState({})
     const [overlayStyle, setOverlayStyle] = useState({});
     const [step, setStep] = useState(0);
     const navigate = useNavigate()
 
-
+    // MM-DD-YYYY
+    console.log(Math.abs(dayjs('2024-03-02T22:27:45.832Z').diff(dayjs('2024-03-05T22:27:45.832Z'), "days")))
+    console.log(step)
     const openModal = (overlayType) => {
         if (overlayType === 'overlayOne') {
             setOverlayStyle({
@@ -26,16 +45,10 @@ export const Modals = () => {
                 backdropBlur: '2px',
             });
         }
-
-        document.getElementById('myModal').style.display = 'block';
-    };
-
-    const closeModal = () => {
-        document.getElementById('myModal').style.display = 'none';
     };
 
     const goToNextStep = () => {
-        if (step === 3) return;
+        if (step === 3) return closeModal();
         setStep(step + 1)
         console.log(step)
     }
@@ -46,79 +59,63 @@ export const Modals = () => {
         console.log(step)
     };
 
+    const updateFormValues = (values) => {
+        setFormValues(prev => ({ ...prev, ...values }))
+    }
+
+    useEffect(() => {
+        if (!isVisible) {
+            setFormValues({})
+            setOverlayStyle({})
+            setStep(2)
+        }
+    }, [isVisible])
 
     return (
-        <div>
-            <div className="buttons">
-                <button className='modal-button' onClick={() => openModal('overlayOne')}>RENT A CAR</button>
-            </div>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-            <div id="myModal" className="modal">
-                <div
-                    id="overlay"
-                    style={overlayStyle}
-                ></div>
-                <div className="modal-content">
-                    <Stepper
-                        steps={[{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }, { label: 'Step 4' }]}
-                        activeStep={step}
-                    />
-                    <h2>Modal Title</h2>
-                    {step == 0 && (
-                        <h1>hola 1</h1>
-                    )}
-                    {step == 1 && (
+            <FormContext.Provider value={{ value: formValues, update: updateFormValues }}>
+                <div style={{ display: isVisible ? 'block' : 'none', position: 'relative', zIndex: 1 }}>
+                    <div id="myModal" className="modal">
+                        <div
+                            id="overlay"
+                            style={overlayStyle}
+                        ></div>
+                        <div className="modal-content">
+                            <h2>Modal Title</h2>
 
-
-                        <div className='pickup-information-container'>
-                            <h5>Recogida</h5>
-                            <div className='date-time'>
-                                <DatePicker />
-                                <TimeField defaultValue={dayjs('2022-04-17T18:30')} />
-
-                                <select className="my-input" >
-                                    <option hidden>
-                                        Lugar de recogida
-                                    </option>
-                                    <option value="manzana">Manzana</option>
-                                    <option value="banana">Banana</option>
-                                    <option value="uva">Uva</option>
-                                    <option value="naranja">Naranja</option>
-                                    <option value="fresa">Fresa</option>
-                                </select>
-                            </div>
-
-                            <h5>Devolución</h5>
-                            <div className='date-time'>
-                                <DatePicker />
-                                <TimeField defaultValue={dayjs('2022-04-17T18:30')} />
-
-                                <select className="my-input" >
-                                    <option hidden>
-                                        Lugar de devolución
-                                    </option>
-                                    <option value="manzana">Manzana</option>
-                                    <option value="banana">Banana</option>
-                                    <option value="uva">Uva</option>
-                                    <option value="naranja">Naranja</option>
-                                    <option value="fresa">Fresa</option>
-                                </select>
-                            </div>
+                            <Stepper
+                                steps={[{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }, { label: 'Step 4' }]}
+                                activeStep={step}
+                                style={{
+                                    width: "100%"
+                                }}
+                                styleConfig={{
+                                    activeBgColor: "#15C1FF",
+                                    completedBgColor: "#D6EAF8"
+                                }}
+                            />
+                            {step === 0 && <UserDataForm goToNextStep={goToNextStep} />}
+                            {step === 1 && <DateDataForm
+                                goToNextStep={goToNextStep}
+                                goBackOneStep={goBackOneStep}
+                            />}
+                            {step === 2 && <CarDataForm
+                                goToNextStep={goToNextStep}
+                                goBackOneStep={goBackOneStep}
+                            />}
+                            {step === 3 && (
+                                <h1>hola 4</h1>
+                            )}
                         </div>
-
-                    )}
-                    {step == 2 && (
-                        <h1>hola 3</h1>
-                    )}
-                    {step == 3 && (
-                        <h1>hola 4</h1>
-                    )}
-                    <div className='modal-content-buttons'>
-                        <button className='modal-content-button-close' onClick={goBackOneStep} />
-                        <button className='modal-content-button-next' onClick={goToNextStep} />
                     </div>
                 </div>
-            </div>
-        </div>
+            </FormContext.Provider>
+        </LocalizationProvider>
     );
 }
+/*   
+<div className='modal-content-buttons'>
+ <button className='modal-content-button-close' onClick={goBackOneStep} />
+ <button className='modal-content-button-next' onClick={goToNextStep} />
+</div>*/

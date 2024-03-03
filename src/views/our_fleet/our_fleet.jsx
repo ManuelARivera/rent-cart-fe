@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { Our_fleetChild } from './our_fleetChild'
 import { useAppConext } from '../../hooks/useAppContext'
-
-
+import { useCars } from '../../hooks/useCars'
 
 export const Our_fleet = () => {
-    const [cars, setCars] = useState(arr)
+    /*const [cars, setCars] = useState(arr)*/
+    const { cars } = useCars()
     const { handleHamburgerClick, handleHamburgerClickOff, isNavVisible } = useAppConext()
     const [selectedCarTypes, setselectedCarTypes] = useState('');
     const [selectedTransmission, setselectedTransmission] = useState('');
@@ -20,8 +20,6 @@ export const Our_fleet = () => {
             const carTypes = []
 
             for (const car of cars) {
-                console.log("ME renderizo")
-
                 if (!addedTransmissions[car.transmission]) {
                     transmissions.push(car.transmission)
                     addedTransmissions[car.transmission] = 1
@@ -41,14 +39,14 @@ export const Our_fleet = () => {
         },
         [cars]
     );
-
     const filteredCars = useMemo(() => cars.filter(car => {
-        console.log("gmail")
         const carTypeMatch = selectedCarTypes === '' || car.carType === selectedCarTypes;
         const transmissionMatch = selectedTransmission === '' || car.transmission === selectedTransmission;
 
         return carTypeMatch && transmissionMatch;
     }), [cars, selectedCarTypes, selectedTransmission])
+
+
 
     const classNameVisible = isNavVisible ? 'nav-container2 nav-container_visible2' : 'nav-container2';
 

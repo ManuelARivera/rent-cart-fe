@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Service } from './components/service';
 import { Review } from './components/review';
 import { useAppConext } from '../../hooks/useAppContext'
@@ -10,6 +10,10 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 export const Home = () => {
     const { handleHamburgerClickOff } = useAppConext()
+    const [isShown, setIsShown] = useState(false);
+
+    const showModal = () => setIsShown(true)
+    const hideModal = () => setIsShown(false)
 
     return (
         <>
@@ -17,9 +21,10 @@ export const Home = () => {
                 <div className='slogan-conteiner'>
                     <h1>Explora, vive... tu viaje, tu libertad</h1>
                     <img className='img-home' src='/images/cr-v.png' />
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <Modals />
-                    </LocalizationProvider>
+                    <div className="buttons">
+                        <button className='modal-button' onClick={showModal}>RENT A CAR</button>
+                    </div>
+                    <Modals closeModal={hideModal} isVisible={isShown} />
                 </div>
             </div>
             <Service />
