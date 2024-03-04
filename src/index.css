@@ -367,12 +367,31 @@ body {}
   grid-column: 2;
   gap: 1rem;
   padding: 30px 16px;
-  /* grid-auto-rows: 22rem; */
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
   width: 100%;
   height: 874px;
   background-color: #F5F6F7;
   overflow-y: auto;
+
+}
+
+.ourfleet-car-container-modal {
+  display: grid;
+  grid-row: 2;
+  grid-column: 2;
+  gap: 1rem;
+  padding: 30px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+  width: 500px;
+  height: 350px;
+  background-color: #F5F6F7;
+  overflow-y: auto;
+
+  @media (max-width:425px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 
 }
 
@@ -1029,7 +1048,7 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -50%);
   background-color: white;
   padding: 20px;
   border-radius: 5px;
@@ -1038,6 +1057,10 @@ button {
 
   >h2 {
     color: #4b4b4c;
+  }
+
+  @media (max-width:425px) {
+    gap: 0px
   }
 }
 

@@ -9,6 +9,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { useCars } from '../hooks/useCars';
 import { useFormContext } from './modal'
 import { Our_fleetChild } from '../views/our_fleet/our_fleetChild';
+import { OurfleetChildModal } from './our-fleetChild-modal';
 
 export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
 
@@ -88,9 +89,9 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
                 </Select>
             </FormControl>
 
-            <div className='ourfleet-car-container'>
+            <div className='ourfleet-car-container-modal'>
                 {
-                    filteredCars.map(el => <Our_fleetChild {...el} />)
+                    filteredCars.map(el => <OurfleetChildModal {...el} />)
                 }
             </div>
             <div className='modal-content-buttons'>
