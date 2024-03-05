@@ -50,7 +50,6 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
 
     const filteredCars = useMemo(() => cars.filter(car => {
         const carTypeMatch = selectedCarTypes === '' || car.carType === selectedCarTypes;
-        console.log(selectedCarTypes)
         return carTypeMatch;
     }), [cars, selectedCarTypes])
 
