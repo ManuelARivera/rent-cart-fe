@@ -53,9 +53,6 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
         return carTypeMatch;
     }), [cars, selectedCarTypes])
 
-    console.log(filteredCars)
-
-    console.log({ value, formData })
     return (
         < div >
 

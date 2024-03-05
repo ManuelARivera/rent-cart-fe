@@ -34,7 +34,6 @@ export const DateDataForm = ({ goBackOneStep, goToNextStep }) => {
     };
 
     const onDatePickerChange = (date, name) => {
-        console.log(date, name)
         setFormData((prev) => ({
             ...prev,
             [name]: date,

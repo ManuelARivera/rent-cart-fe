@@ -30,7 +30,6 @@ export const Modals = ({ closeModal, isVisible }) => {
 
     // MM-DD-YYYY
     console.log(Math.abs(dayjs('2024-03-02T22:27:45.832Z').diff(dayjs('2024-03-05T22:27:45.832Z'), "days")))
-    console.log(step)
     const openModal = (overlayType) => {
         if (overlayType === 'overlayOne') {
             setOverlayStyle({
@@ -50,13 +49,11 @@ export const Modals = ({ closeModal, isVisible }) => {
     const goToNextStep = () => {
         if (step === 3) return closeModal();
         setStep(step + 1)
-        console.log(step)
     }
 
     const goBackOneStep = () => {
         if (step === 0) return;
         setStep(step - 1)
-        console.log(step)
     };
 
     const updateFormValues = (values) => {
