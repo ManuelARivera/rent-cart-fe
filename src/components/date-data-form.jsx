@@ -44,7 +44,6 @@ export const DateDataForm = ({ goBackOneStep, goToNextStep }) => {
         e.preventDefault();
         update(formData);
         goToNextStep();
-
     };
 
     return (

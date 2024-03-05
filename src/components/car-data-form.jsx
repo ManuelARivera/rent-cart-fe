@@ -8,7 +8,6 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 import { useCars } from '../hooks/useCars';
 import { useFormContext } from './modal'
-import { Our_fleetChild } from '../views/our_fleet/our_fleetChild';
 import { OurfleetChildModal } from './our-fleetChild-modal';
 
 export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
@@ -48,10 +47,28 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
         setselectedCarTypes(e.target.value)
     };
 
+    const handleOnclick = (e) => {
+        setFormData(prev => ({
+            ...prev,
+            idCar: e
+        }))
+    };
+
+    const submit = () => {
+        if (!formData.idCar) {
+            alert("NO PUEDES CONTINUAR SIN SELECCIONAR UN CARRO")
+            return
+        }
+        update(formData)
+        goToNextStep();
+    }
+
     const filteredCars = useMemo(() => cars.filter(car => {
         const carTypeMatch = selectedCarTypes === '' || car.carType === selectedCarTypes;
         return carTypeMatch;
     }), [cars, selectedCarTypes])
+
+    const carSelected = formData.idCar
 
     return (
         < div >
@@ -87,12 +104,19 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
 
             <div className='ourfleet-car-container-modal'>
                 {
-                    filteredCars.map(el => <OurfleetChildModal {...el} />)
+                    filteredCars.map(car => (
+                        <OurfleetChildModal
+                            key={car.id}
+                            {...car}
+                            onClick={() => handleOnclick(car.id)}
+                            selected={carSelected === car.id}
+                        />
+                    ))
                 }
             </div>
             <div className='modal-content-buttons'>
                 <button className='modal-content-button-next' onClick={goBackOneStep} ><NavigateBeforeIcon /> </button>
-                <button className='modal-content-button-next' ><NavigateNextIcon /> </button>
+                <button className='modal-content-button-next' onClick={submit}><NavigateNextIcon /> </button>
             </div>
         </div >
     )

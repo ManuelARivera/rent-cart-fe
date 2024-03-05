@@ -455,6 +455,7 @@ body {}
   flex-direction: column;
   height: fit-content;
   gap: 10px;
+  border: 1px solid #ffffff;
   border-radius: 16px;
   padding: 20px;
   background-color: #ffffff;
@@ -464,12 +465,18 @@ body {}
     display: flex;
     justify-content: space-between;
   }
+
+  &.selected {
+    border-color: #007bff;
+  }
 }
 
 .brand-container {
   font-size: 100%;
   color: #002f6d;
-
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .alok {

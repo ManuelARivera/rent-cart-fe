@@ -9,6 +9,8 @@ export const OurfleetChildModal = ({
     mileage,
     price,
     images,
+    onClick,
+    selected
 }) => {
     const priceFormatted = (price ?? 0).toLocaleString('en-US', {
         style: 'currency',
@@ -16,8 +18,8 @@ export const OurfleetChildModal = ({
         maximumFractionDigits: 0
     })
     return (
-        <div className='our-fleetchild-container'>
-            <h3 className='brand-container'>{brand}</h3>
+        <div className={`our-fleetchild-container ${selected ? "selected" : ''}`} onClick={onClick}>
+            <h3 title={brand} className='brand-container'>{brand}</h3>
             <div className='alok'>
                 <div className='passengers-container'>
                     <img src='images/passengers.png' /> {passengers}
