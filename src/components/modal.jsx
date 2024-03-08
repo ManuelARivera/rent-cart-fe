@@ -6,6 +6,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { UserDataForm } from './user-data-form';
 import { DateDataForm } from './date-data-form';
 import { CarDataForm } from './car-data-form';
+import { SetServiceDataForm } from './set-service-data-form';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -20,16 +21,12 @@ export const useFormContext = () => {
     return useContext(FormContext)
 }
 
-
-
 export const Modals = ({ closeModal, isVisible }) => {
     const [formValues, setFormValues] = useState({})
     const [overlayStyle, setOverlayStyle] = useState({});
     const [step, setStep] = useState(0);
     const navigate = useNavigate()
 
-    // MM-DD-YYYY
-    console.log(Math.abs(dayjs('2024-03-02T22:27:45.832Z').diff(dayjs('2024-03-05T22:27:45.832Z'), "days")))
     const openModal = (overlayType) => {
         if (overlayType === 'overlayOne') {
             setOverlayStyle({
@@ -64,7 +61,7 @@ export const Modals = ({ closeModal, isVisible }) => {
         if (!isVisible) {
             setFormValues({})
             setOverlayStyle({})
-            setStep(2)
+            setStep(3)
         }
     }, [isVisible])
 
@@ -102,7 +99,15 @@ export const Modals = ({ closeModal, isVisible }) => {
                                 goBackOneStep={goBackOneStep}
                             />}
                             {step === 3 && (
-                                <h1>hola 4</h1>
+                                <>
+                                    <h1>hola 4</h1>
+                                    <SetServiceDataForm />
+                                    <div className='modal-content-buttons'>
+                                        <button className='modal-content-button-close' onClick={goBackOneStep} />
+                                        <button className='modal-content-button-next' onClick={goToNextStep} />
+                                    </div>
+                                </>
+
                             )}
                         </div>
                     </div>

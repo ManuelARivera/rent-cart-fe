@@ -4,13 +4,19 @@ import { HamburgerIcon } from '@chakra-ui/icons'
 import { Our_fleetChild } from './our_fleetChild'
 import { useAppConext } from '../../hooks/useAppContext'
 import { useCars } from '../../hooks/useCars'
+import { Modals } from '../../components/modal'
 
 export const Our_fleet = () => {
     /*const [cars, setCars] = useState(arr)*/
     const { cars } = useCars()
-    const { handleHamburgerClick, handleHamburgerClickOff, isNavVisible } = useAppConext()
+    const { handleHamburgerClick, handleHamburgerClickOff, isNavVisible, setidcrr } = useAppConext()
     const [selectedCarTypes, setselectedCarTypes] = useState('');
     const [selectedTransmission, setselectedTransmission] = useState('');
+
+    const [isShown, setIsShown] = useState(false);
+
+    const showModal = () => setIsShown(true)
+    const hideModal = () => setIsShown(false)
 
     const { carTypes, transmissions } = useMemo(
         () => {
@@ -31,7 +37,6 @@ export const Our_fleet = () => {
                 }
             }
 
-
             return {
                 carTypes,
                 transmissions
@@ -39,12 +44,17 @@ export const Our_fleet = () => {
         },
         [cars]
     );
+
     const filteredCars = useMemo(() => cars.filter(car => {
         const carTypeMatch = selectedCarTypes === '' || car.carType === selectedCarTypes;
         const transmissionMatch = selectedTransmission === '' || car.transmission === selectedTransmission;
 
         return carTypeMatch && transmissionMatch;
     }), [cars, selectedCarTypes, selectedTransmission])
+
+    const handleOnclick = (e) => {
+        setidcrr(e)
+    };
 
 
 
@@ -159,9 +169,17 @@ export const Our_fleet = () => {
 
             <div onClick={handleHamburgerClickOff} className='ourfleet-car-container'>
                 {
-                    filteredCars.map(el => <Our_fleetChild {...el} />)
+                    filteredCars.map(car => (
+                        <Our_fleetChild
+                            key={car.id}
+                            {...car}
+                            onClick={() => handleOnclick(car.id)}
+                            onClickModal={showModal}
+                        />
+                    ))
                 }
             </div>
+            <Modals closeModal={hideModal} isVisible={isShown} />
 
         </div>
     )

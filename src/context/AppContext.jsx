@@ -6,6 +6,7 @@ export const AppContext = createContext({})
 export const AppContextProvider = ({ children }) => {
 
     const [isNavVisible, setNavVisible] = useState(false);
+    const [idcrr, setidcrr] = useState('');
 
     const handleHamburgerClick = () => {
         setNavVisible(!isNavVisible);
@@ -19,7 +20,9 @@ export const AppContextProvider = ({ children }) => {
         <AppContext.Provider value={{
             handleHamburgerClick,
             handleHamburgerClickOff,
-            isNavVisible
+            isNavVisible,
+            idcrr,
+            setidcrr
         }}>
             {children}
         </AppContext.Provider>

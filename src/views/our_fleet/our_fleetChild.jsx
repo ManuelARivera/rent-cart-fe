@@ -9,6 +9,8 @@ export const Our_fleetChild = ({
     mileage,
     price,
     images,
+    onClick,
+    onClickModal
 }) => {
     const priceFormatted = (price ?? 0).toLocaleString('en-US', {
         style: 'currency',
@@ -35,7 +37,7 @@ export const Our_fleetChild = ({
             <h4 className='mileage-container'>{mileage}</h4>
             <div className='price-rent-btn-container'>
                 <span className='price-container'>{priceFormatted}</span>
-                <button>RENT A CAR</button>
+                <button onClick={() => { onClick(); onClickModal(); }}>RENT A CAR</button>
             </div>
         </div>
     )

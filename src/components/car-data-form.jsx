@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -6,8 +6,9 @@ import FormControl from '@mui/material/FormControl';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
+import { useAppConext } from '../hooks/useAppContext';
 import { useCars } from '../hooks/useCars';
-import { useFormContext } from './modal'
+import { useFormContext } from './modal';
 import { OurfleetChildModal } from './our-fleetChild-modal';
 
 export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
@@ -17,12 +18,14 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
         update
     } = useFormContext()
 
-    const { cars } = useCars()
-    const [selectedCarTypes, setselectedCarTypes] = useState('');
+    const { idcrr, setidcrr } = useAppConext()
     const [formData, setFormData] = useState({
-        idCar: '',
+        idCar: idcrr || '',
         ...value
     })
+
+    const { cars } = useCars()
+    const [selectedCarTypes, setselectedCarTypes] = useState('');
 
 
     const { carTypes } = useMemo(
@@ -54,6 +57,9 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
         }))
     };
 
+    console.log(formData.idCar)
+
+
     const submit = () => {
         if (!formData.idCar) {
             alert("NO PUEDES CONTINUAR SIN SELECCIONAR UN CARRO")
@@ -63,6 +69,10 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
         goToNextStep();
     }
 
+    const goBackToChooseCar = () => {
+        setidcrr('')
+    }
+
     const filteredCars = useMemo(() => cars.filter(car => {
         const carTypeMatch = selectedCarTypes === '' || car.carType === selectedCarTypes;
         return carTypeMatch;
@@ -70,54 +80,64 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
 
     const carSelected = formData.idCar
 
+    useEffect(() => {
+        setTimeout(() => {
+            const el = document.querySelector('.selected')
+            if (el) el.scrollIntoView({ behavior: 'smooth' })
+        }, 500)
+    }, [])
+
     return (
-        < div >
+        <>
+
+            < div >
 
 
-            <FormControl
-                variant="standard"
-                sx={{ m: 1, minWidth: 120 }}
-            >
-                <InputLabel id="demo-simple-select-standard-label">Tipo de auto</InputLabel>
-                <Select
-                    required
-                    labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard"
-                    name="idCar"
-                    value={selectedCarTypes}
-                    onChange={handleChange}
+                <FormControl
+                    variant="standard"
+                    sx={{ m: 1, minWidth: 120 }}
                 >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    {carTypes.map((carType, index) => (
-                        <MenuItem
-                            key={index}
-                            value={carType}
-                        >
-                            {carType}
+                    <InputLabel id="demo-simple-select-standard-label">Tipo de auto</InputLabel>
+                    <Select
+                        required
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        name="idCar"
+                        value={selectedCarTypes}
+                        onChange={handleChange}
+                    >
+                        <MenuItem value="">
+                            <em>None</em>
                         </MenuItem>
-                    ))}
+                        {carTypes.map((carType, index) => (
+                            <MenuItem
+                                key={index}
+                                value={carType}
+                            >
+                                {carType}
+                            </MenuItem>
+                        ))}
 
-                </Select>
-            </FormControl>
+                    </Select>
+                </FormControl>
 
-            <div className='ourfleet-car-container-modal'>
-                {
-                    filteredCars.map(car => (
-                        <OurfleetChildModal
-                            key={car.id}
-                            {...car}
-                            onClick={() => handleOnclick(car.id)}
-                            selected={carSelected === car.id}
-                        />
-                    ))
-                }
-            </div>
-            <div className='modal-content-buttons'>
-                <button className='modal-content-button-next' onClick={goBackOneStep} ><NavigateBeforeIcon /> </button>
-                <button className='modal-content-button-next' onClick={submit}><NavigateNextIcon /> </button>
-            </div>
-        </div >
+                <div className='ourfleet-car-container-modal'>
+                    {
+                        filteredCars.map(car => (
+                            <OurfleetChildModal
+                                key={car.id}
+                                {...car}
+                                onClick={() => handleOnclick(car.id)}
+                                selected={carSelected === car.id}
+                            />
+                        ))
+                    }
+                </div>
+                <div className='modal-content-buttons'>
+                    <button className='modal-content-button-next' onClick={goBackOneStep} ><NavigateBeforeIcon /> </button>
+                    <button className='modal-content-button-next' onClick={submit}><NavigateNextIcon /> </button>
+                </div>
+            </div >
+        </>
     )
 }

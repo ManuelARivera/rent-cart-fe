@@ -2,6 +2,7 @@ import React from 'react'
 
 
 export const OurfleetChildModal = ({
+    id,
     brand,
     passengers,
     luggages,
@@ -17,8 +18,9 @@ export const OurfleetChildModal = ({
         currency: 'USD',
         maximumFractionDigits: 0
     })
+
     return (
-        <div className={`our-fleetchild-container ${selected ? "selected" : ''}`} onClick={onClick}>
+        <div className={`our-fleetchild-container ${selected ? "selected" : ''}`} id={"car-" + id} onClick={onClick}>
             <h3 title={brand} className='brand-container'>{brand}</h3>
             <div className='alok'>
                 <div className='passengers-container'>
