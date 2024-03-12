@@ -7,7 +7,6 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 import { useAppConext } from '../hooks/useAppContext';
-import { useCars } from '../hooks/useCars';
 import { useFormContext } from './modal';
 import { OurfleetChildModal } from './our-fleetChild-modal';
 
@@ -18,16 +17,15 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
         update
     } = useFormContext()
 
-    const { idcrr, setidcrr } = useAppConext()
+    const { idcrr, setidcrr, cars } = useAppConext()
     const [formData, setFormData] = useState({
         idCar: idcrr || '',
         ...value
     })
 
-    const { cars } = useCars()
     const [selectedCarTypes, setselectedCarTypes] = useState('');
 
-
+    console.log(formData.idCar)
     const { carTypes } = useMemo(
         () => {
             const addedCarTypes = {}
@@ -57,9 +55,6 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
         }))
     };
 
-    console.log(formData.idCar)
-
-
     const submit = () => {
         if (!formData.idCar) {
             alert("NO PUEDES CONTINUAR SIN SELECCIONAR UN CARRO")
@@ -67,10 +62,6 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
         }
         update(formData)
         goToNextStep();
-    }
-
-    const goBackToChooseCar = () => {
-        setidcrr('')
     }
 
     const filteredCars = useMemo(() => cars.filter(car => {
@@ -89,9 +80,7 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
 
     return (
         <>
-
             < div >
-
 
                 <FormControl
                     variant="standard"

@@ -67,13 +67,14 @@ export const DateDataForm = ({ goBackOneStep, goToNextStep }) => {
                         value={formData.pickupDate}
                         slotProps={{
                             textField: {
-                                required: true
+                                required: true,
+                                variant: 'standard'
                             }
                         }}
                     />
                     <FormControl
                         variant="standard"
-                        sx={{ m: 1, minWidth: 120 }}
+                        sx={{ marginBottom: "16px", minWidth: 120 }}
                     >
                         <InputLabel id="demo-simple-select-standard-label">Lugar de entrega</InputLabel>
                         <Select
@@ -106,13 +107,14 @@ export const DateDataForm = ({ goBackOneStep, goToNextStep }) => {
                         value={formData.returnDate}
                         slotProps={{
                             textField: {
-                                required: true
+                                required: true,
+                                variant: 'standard'
                             }
                         }}
                     />
                     <FormControl
                         variant="standard"
-                        sx={{ m: 1, minWidth: 120 }}
+                        sx={{ marginBottom: "16px", minWidth: 120 }}
                     >
                         <InputLabel id="demo-simple-select-standard-label">Lugar de retorno</InputLabel>
                         <Select

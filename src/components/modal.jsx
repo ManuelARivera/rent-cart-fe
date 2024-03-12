@@ -7,6 +7,7 @@ import { UserDataForm } from './user-data-form';
 import { DateDataForm } from './date-data-form';
 import { CarDataForm } from './car-data-form';
 import { SetServiceDataForm } from './set-service-data-form';
+import CloseIcon from '@mui/icons-material/Close';
 
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -57,13 +58,23 @@ export const Modals = ({ closeModal, isVisible }) => {
         setFormValues(prev => ({ ...prev, ...values }))
     }
 
+    const handleClose = () => {
+        if (Object.keys(formValues).length > 0) {
+            const response = confirm("Estás seguro de cerrar?")
+            if (!response) return
+        }
+        closeModal()
+    }
+
     useEffect(() => {
         if (!isVisible) {
             setFormValues({})
             setOverlayStyle({})
-            setStep(3)
+            setStep(0)
         }
     }, [isVisible])
+
+    if (!isVisible) return null
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -76,7 +87,12 @@ export const Modals = ({ closeModal, isVisible }) => {
                             style={overlayStyle}
                         ></div>
                         <div className="modal-content">
-                            <h2>Modal Title</h2>
+                            <CloseIcon className='closeicon' onClick={handleClose} />
+                            {step === 0 && <h2>Datos personales</h2>}
+                            {step === 1 && <h2>Fecha y lugar</h2>}
+                            {step === 2 && <h2>Seleccionar auto</h2>}
+                            {step === 3 && <h2>Confirmación</h2>}
+
 
                             <Stepper
                                 steps={[{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }, { label: 'Step 4' }]}
@@ -98,17 +114,7 @@ export const Modals = ({ closeModal, isVisible }) => {
                                 goToNextStep={goToNextStep}
                                 goBackOneStep={goBackOneStep}
                             />}
-                            {step === 3 && (
-                                <>
-                                    <h1>hola 4</h1>
-                                    <SetServiceDataForm />
-                                    <div className='modal-content-buttons'>
-                                        <button className='modal-content-button-close' onClick={goBackOneStep} />
-                                        <button className='modal-content-button-next' onClick={goToNextStep} />
-                                    </div>
-                                </>
-
-                            )}
+                            {step === 3 && (<SetServiceDataForm goBackOneStep={goBackOneStep} />)}
                         </div>
                     </div>
                 </div>

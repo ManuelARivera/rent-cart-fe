@@ -8,8 +8,7 @@ import { Modals } from '../../components/modal'
 
 export const Our_fleet = () => {
     /*const [cars, setCars] = useState(arr)*/
-    const { cars } = useCars()
-    const { handleHamburgerClick, handleHamburgerClickOff, isNavVisible, setidcrr } = useAppConext()
+    const { handleHamburgerClick, handleHamburgerClickOff, isNavVisible, setidcrr, cars } = useAppConext()
     const [selectedCarTypes, setselectedCarTypes] = useState('');
     const [selectedTransmission, setselectedTransmission] = useState('');
 
