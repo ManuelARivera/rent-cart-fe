@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import { useFormContext } from './modal';
-import { useCars } from '../hooks/useCars';
+import { useAppConext } from '../hooks/useAppContext';
 import dayjs from 'dayjs';
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
 import Checkbox from '@mui/material/Checkbox';
@@ -8,8 +8,12 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { CreateService } from '../services/createService';
 
 export const SetServiceDataForm = ({ goBackOneStep }) => {
-    const { cars } = useCars()
     const { value } = useFormContext()
+
+    const { cars } = useAppConext()
+
+    console.log(value.idCar)
+    console.log(cars)
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     const selectedCar = useMemo(() => cars.find(car => car.id === value.idCar), [cars]);
@@ -33,7 +37,6 @@ export const SetServiceDataForm = ({ goBackOneStep }) => {
             ],
         });
     };
-    console.log(value)
     const onApprove = async (data, actions) => {
         return actions.order.capture().then(async (details) => {
 

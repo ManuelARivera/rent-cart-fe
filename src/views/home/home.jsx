@@ -22,7 +22,7 @@ export const Home = () => {
                     <h1>Explora, vive... tu viaje, tu libertad</h1>
                     <img className='img-home' src='/images/cr-v.png' />
                     <div className="buttons">
-                        <button className='modal-button' onClick={showModal}>RENT A CAR</button>
+                        <button className='modal-button btnpointer' onClick={showModal}>RENT A CAR</button>
                     </div>
                     <Modals closeModal={hideModal} isVisible={isShown} />
                 </div>

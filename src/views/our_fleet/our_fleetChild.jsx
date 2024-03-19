@@ -37,7 +37,7 @@ export const Our_fleetChild = ({
             <h4 className='mileage-container'>{mileage}</h4>
             <div className='price-rent-btn-container'>
                 <span className='price-container'>{priceFormatted}</span>
-                <button onClick={() => { onClick(); onClickModal(); }}>RENT A CAR</button>
+                <button className='btnpointer' onClick={() => { onClick(); onClickModal(); }}>RENT A CAR</button>
             </div>
         </div>
     )

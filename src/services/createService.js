@@ -1,5 +1,4 @@
 export const CreateService = async (id, service) => {
-    console.log(service)
 
     const options = {
         method: 'POST',

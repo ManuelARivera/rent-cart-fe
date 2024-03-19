@@ -24,8 +24,6 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
     })
 
     const [selectedCarTypes, setselectedCarTypes] = useState('');
-
-    console.log(formData.idCar)
     const { carTypes } = useMemo(
         () => {
             const addedCarTypes = {}

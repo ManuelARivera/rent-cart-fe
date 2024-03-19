@@ -505,6 +505,7 @@ body {}
   padding: 0 10px;
   aspect-ratio: 16/9;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .mileage-container {
@@ -859,6 +860,10 @@ button {
 
     >div {
       margin-bottom: 16px;
+    }
+
+    .btnsub {
+      float: right;
     }
   }
 
@@ -1247,4 +1252,14 @@ button {
 .shadow-container {
   box-shadow: 0 0px 10px 4px rgba(0, 0, 0, 0.10);
   border-radius: 8px;
+}
+
+.btnsub {
+  grid-column-start: 2;
+  justify-self: end !important;
+  width: 100px;
+}
+
+.btnpointer {
+  cursor: pointer;
 }

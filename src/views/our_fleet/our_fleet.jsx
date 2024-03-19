@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { Our_fleetChild } from './our_fleetChild'
 import { useAppConext } from '../../hooks/useAppContext'
-import { useCars } from '../../hooks/useCars'
 import { Modals } from '../../components/modal'
 
 export const Our_fleet = () => {
-    /*const [cars, setCars] = useState(arr)*/
     const { handleHamburgerClick, handleHamburgerClickOff, isNavVisible, setidcrr, cars } = useAppConext()
     const [selectedCarTypes, setselectedCarTypes] = useState('');
     const [selectedTransmission, setselectedTransmission] = useState('');
@@ -183,97 +181,3 @@ export const Our_fleet = () => {
         </div>
     )
 }
-
-
-const arr = [
-    {
-        name: 'Honda CR-V 2022',
-        passengers: 2,
-        luggages: 3,
-        transmission: 'Automática',
-        mileage: 'Ilimitado',
-        price: 2500,
-        img: '/images/cr-v.png',
-        carType: 'SUV',
-    },
-    {
-        name: 'Kia Soul 2018',
-        passengers: 5,
-        luggages: 3,
-        transmission: 'Automática',
-        mileage: 'Ilimitado',
-        price: 2550,
-        img: 'https://www.dealerfireblog.com/familykia/wp-content/uploads/sites/1073/2018/03/Alien-2_o.jpg',
-        carType: 'Familiar',
-    },
-    {
-        name: 'Honda CR-V 2024',
-        passengers: 2,
-        luggages: 3,
-        transmission: 'Manual',
-        mileage: 'Ilimitado',
-        price: 2500,
-        img: 'https://selfimotors.com/wp-content/uploads/2023/06/KIA-SOUL-13_resized.jpg',
-        carType: 'SUV',
-    },
-    {
-        name: 'Toyota Camry 2023',
-        passengers: 4,
-        luggages: 2,
-        transmission: 'Automática',
-        mileage: 'Ilimitado',
-        price: 2800,
-        img: 'https://selfimotors.com/wp-content/uploads/2023/06/KIA-SOUL-13_resized.jpg',
-        carType: 'Sedán',
-    },
-    {
-        name: 'Mazda CX-5 2021',
-        passengers: 5,
-        luggages: 4,
-        transmission: 'Automática',
-        mileage: 'Ilimitado',
-        price: 3000,
-        img: '/images/cr-v.png',
-        carType: 'SUV',
-    },
-    {
-        name: 'Ford Mustang 2022',
-        passengers: 2,
-        luggages: 1,
-        transmission: 'Manual',
-        mileage: 'Ilimitado',
-        price: 3500,
-        img: 'https://www.dealerfireblog.com/familykia/wp-content/uploads/sites/1073/2018/03/Alien-2_o.jpg',
-        carType: 'Coupé',
-    },
-    {
-        name: 'Chevrolet Malibu 2022',
-        passengers: 4,
-        luggages: 3,
-        transmission: 'Automática',
-        mileage: 'Ilimitado',
-        price: 2700,
-        img: 'https://www.dealerfireblog.com/familykia/wp-content/uploads/sites/1073/2018/03/Alien-2_o.jpg',
-        carType: 'Sedán',
-    },
-    {
-        name: 'Nissan Rogue 2023',
-        passengers: 5,
-        luggages: 4,
-        transmission: 'Automática',
-        mileage: 'Ilimitado',
-        price: 3200,
-        img: 'https://selfimotors.com/wp-content/uploads/2023/06/KIA-SOUL-13_resized.jpg',
-        carType: 'SUV',
-    },
-    {
-        name: 'Audi TT 2022',
-        passengers: 2,
-        luggages: 1,
-        transmission: 'Automática',
-        mileage: 'Ilimitado',
-        price: 3800,
-        img: '/images/cr-v.png',
-        carType: 'Coupé',
-    }
-];

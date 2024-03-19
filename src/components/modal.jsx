@@ -9,10 +9,6 @@ import { CarDataForm } from './car-data-form';
 import { SetServiceDataForm } from './set-service-data-form';
 import CloseIcon from '@mui/icons-material/Close';
 
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import dayjs from 'dayjs';
-
 const FormContext = createContext({
     value: {},
     update: () => { }
@@ -122,8 +118,3 @@ export const Modals = ({ closeModal, isVisible }) => {
         </LocalizationProvider>
     );
 }
-/*   
-<div className='modal-content-buttons'>
- <button className='modal-content-button-close' onClick={goBackOneStep} />
- <button className='modal-content-button-next' onClick={goToNextStep} />
-</div>*/

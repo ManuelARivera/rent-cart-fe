@@ -10,6 +10,23 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { useFormContext } from './modal'
 
 export const DateDataForm = ({ goBackOneStep, goToNextStep }) => {
+    const locations = [
+        {
+            name: 'Aero. Internacional de Punta Cana',
+        },
+        {
+            name: 'Aero. Internacional Las Américas',
+        },
+        {
+            name: 'Aero. Internacional del Cibao',
+        },
+        {
+            name: 'Provincia Santo Domingo',
+        },
+        {
+            name: 'Distrito Nacional',
+        },
+    ];
 
     const {
         value,
@@ -86,12 +103,12 @@ export const DateDataForm = ({ goBackOneStep, goToNextStep }) => {
                             onChange={handleChange}
 
                         >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={"10"}>Ten</MenuItem>
-                            <MenuItem value={"20"}>Twenty</MenuItem>
-                            <MenuItem value={"30"}>Thirty</MenuItem>
+
+                            {locations.map((location, index) => (
+                                <MenuItem key={index} value={location.name}>
+                                    {location.name}
+                                </MenuItem>
+                            ))}
                         </Select>
                     </FormControl>
                 </div>
@@ -126,12 +143,11 @@ export const DateDataForm = ({ goBackOneStep, goToNextStep }) => {
                             onChange={handleChange}
 
                         >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={"10"}>Ten</MenuItem>
-                            <MenuItem value={"20"}>Twenty</MenuItem>
-                            <MenuItem value={"30"}>Thirty</MenuItem>
+                            {locations.map((location, index) => (
+                                <MenuItem key={index} value={location.name}>
+                                    {location.name}
+                                </MenuItem>
+                            ))}
                         </Select>
                     </FormControl>
                 </div>
