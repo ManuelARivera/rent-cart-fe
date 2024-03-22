@@ -63,7 +63,6 @@ export const Review = () => {
 
     const [randomReviews, setRandomReviews] = useState([]);
 
-    // Función para obtener índices aleatorios
     const getRandomIndexes = (max, count) => {
         const indexes = [];
         while (indexes.length < count) {
@@ -76,20 +75,12 @@ export const Review = () => {
     };
 
     useEffect(() => {
-        // Obtener tres índices aleatorios
         const randomIndexes = getRandomIndexes(reviewChildData.length, 3);
 
-        // Seleccionar los elementos correspondientes a los índices aleatorios
         const selectedReviews = randomIndexes.map(index => reviewChildData[index]);
 
-        // Actualizar el estado con las reseñas aleatorias
         setRandomReviews(selectedReviews);
-    }, []); // El segundo argumento [] significa que este efecto solo se ejecutará una vez al montar el componente
-
-
-
-
-
+    }, []);
 
     return (
         <>

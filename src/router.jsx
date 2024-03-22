@@ -6,6 +6,7 @@ import { Home } from "./views/home";
 import { About_us } from "./views/about_us";
 import { Contact } from "./views/contact";
 import { Our_fleet } from "./views/our_fleet/our_fleet";
+import { Contract } from "./views/contract/contract";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
             {
                 path: "contact",
                 element: <Contact name={"Contact Page"} />
+            },
+            {
+                path: "contract",
+                element: <Contract name={"Contract Page"} />
             },
         ]
     },

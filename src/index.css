@@ -1263,3 +1263,39 @@ button {
 .btnpointer {
   cursor: pointer;
 }
+
+.contract-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.contract-title {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contract-container h3,
+.contract-container h4 {
+  color: #555;
+  margin-top: 15px;
+}
+
+.contract-container p {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.signature {
+  color: #777;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.fcb {
+  margin-left: 11px;
+}

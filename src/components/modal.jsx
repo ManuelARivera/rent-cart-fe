@@ -91,7 +91,7 @@ export const Modals = ({ closeModal, isVisible }) => {
 
 
                             <Stepper
-                                steps={[{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }, { label: 'Step 4' }]}
+                                steps={[{ label: 'Step 1', onClick: () => setStep(0) }, { label: 'Step 2', onClick: () => setStep(1) }, { label: 'Step 3', onClick: () => setStep(2) }, { label: 'Step 4', onClick: () => setStep(3) }]}
                                 activeStep={step}
                                 style={{
                                     width: "100%"
