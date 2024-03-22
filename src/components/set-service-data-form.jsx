@@ -38,7 +38,7 @@ export const SetServiceDataForm = ({ goBackOneStep }) => {
             purchase_units: [
                 {
                     amount: {
-                        value: totalprice,
+                        value: ttprice,
                     },
                 },
             ],
