@@ -158,7 +158,7 @@ export const SetServiceDataForm = ({ goBackOneStep }) => {
             <div style={{ width: '90%' }}>
                 {
                     selectedCar && (
-                        <PayPalScriptProvider options={{ clientId: paypalClientKey, components: "buttons" }}>
+                        <PayPalScriptProvider options={{ clientId: 'AcJ2HtCRgDV3GwfAvp253X_jaMxhTw2eclLDi_7rc-5u_Fbe28VGdBv46n6QzTRI4_kiXY8Dr8calQuX', components: "buttons" }}>
                             <PayPalButtons disabled={arePaymentButtonsDisabled} style={{ layout: "vertical" }} createOrder={createOrder} onApprove={onApprove} />
                         </PayPalScriptProvider>
                     )
