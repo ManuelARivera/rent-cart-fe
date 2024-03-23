@@ -38,7 +38,7 @@ export const SetServiceDataForm = ({ goBackOneStep }) => {
             purchase_units: [
                 {
                     amount: {
-                        value: ttprice,
+                        value: totalprice,
                     },
                 },
             ],
@@ -140,7 +140,13 @@ export const SetServiceDataForm = ({ goBackOneStep }) => {
                                     onClick={handleChangePrice}
                                 />
                             }
-                            label="Apartar"
+                            title="Esto es un mensaje de ejemplo"
+                            label={
+                                <div>
+                                    Apartar
+                                    <span title="Title de la image">🗯</span>
+                                </div>
+                            }
                         />
                     </div>
                     <Checkbox {...label} value={accept} onChange={e => setAccept(e.target.checked)} />
@@ -159,7 +165,7 @@ export const SetServiceDataForm = ({ goBackOneStep }) => {
                 {
                     selectedCar && (
                         <PayPalScriptProvider options={{ clientId: paypalClientKey, components: "buttons" }}>
-                            <PayPalButtons disabled={arePaymentButtonsDisabled} style={{ layout: "vertical" }} createOrder={createOrder} onApprove={onApprove} />
+                            <PayPalButtons key={isChecked ? 'apartar' : 'alquilar'} disabled={arePaymentButtonsDisabled} style={{ layout: "vertical" }} createOrder={createOrder} onApprove={onApprove} />
                         </PayPalScriptProvider>
                     )
                 }
