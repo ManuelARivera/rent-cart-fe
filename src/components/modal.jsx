@@ -110,7 +110,7 @@ export const Modals = ({ closeModal, isVisible }) => {
                                 goToNextStep={goToNextStep}
                                 goBackOneStep={goBackOneStep}
                             />}
-                            {step === 3 && (<SetServiceDataForm goBackOneStep={goBackOneStep} />)}
+                            {step === 3 && (<SetServiceDataForm goBackOneStep={goBackOneStep} closeModal={closeModal} />)}
                         </div>
                     </div>
                 </div>

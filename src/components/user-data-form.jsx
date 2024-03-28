@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useFormContext } from './modal'
 
+
 export const UserDataForm = ({ goToNextStep }) => {
     const {
         value,
@@ -11,16 +12,28 @@ export const UserDataForm = ({ goToNextStep }) => {
     } = useFormContext()
 
     const [formData, setFormData] = useState({
-        name: '',
-        lastName: '',
         address: '',
         telephoneNumber: '',
         nationality: '',
         idCard: '',
         licencenumber: '',
-        expiration: '',
         ...value
     })
+
+    const [isValid, setIsValid] = useState(false);
+
+    const handleChange = event => {
+        const val = event.target.value;
+
+        if (isEmail(val)) {
+            setIsValid(true);
+        } else {
+            setIsValid(false);
+        }
+
+        setValue(val);
+        props.handleChange(val, isValid);
+    }
 
     const onChangeInput = (e) => {
         const { name, value } = e.target
@@ -51,34 +64,7 @@ export const UserDataForm = ({ goToNextStep }) => {
             <TextField
                 required
                 id="standard-helperText"
-                label="Nombre"
-                variant="standard"
-                name='name'
-                onChange={onChangeInput}
-                value={formData.name}
-            />
-            <TextField
-                required
-                id="standard-helperText"
-                label="Apellido"
-                variant="standard"
-                name='lastName'
-                onChange={onChangeInput}
-                value={formData.lastName}
-            />
-            <TextField
-                required
-                id="standard-helperText"
-                label="Nacionalidad"
-                variant="standard"
-                name='nationality'
-                onChange={onChangeInput}
-                value={formData.nationality}
-            />
-            <TextField
-                required
-                id="standard-helperText"
-                label="#Identificación"
+                label="Identificación"
                 variant="standard"
                 name='idCard'
                 onChange={onChangeInput}
@@ -106,22 +92,12 @@ export const UserDataForm = ({ goToNextStep }) => {
             <TextField
                 required
                 id="standard-helperText"
-                label="#Licencia"
+                label="Licencia"
                 variant="standard"
                 name='licencenumber'
                 onChange={onChangeInput}
                 value={formData.licencenumber}
             />
-            <TextField
-                required
-                id="standard-helperText"
-                label="Expiración"
-                variant="standard"
-                name='expiration'
-                onChange={onChangeInput}
-                value={formData.expiration}
-            />
-
 
             <div className='modal-content-buttons'>
                 <button type="submit" className='modal-content-button-next' ><NavigateNextIcon /> </button>
