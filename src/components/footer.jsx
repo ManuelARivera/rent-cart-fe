@@ -32,7 +32,7 @@ export const Footer = () => {
                                 <img className='instlogo' src='/images/instagram.png' />
                             </a>
 
-                            <a href="https://wa.me/18299051978" target='_blank'>
+                            <a href="https://wa.me/18295766588" target='_blank'>
                                 <img className='wslogo' alt="Chat on WhatsApp" src="/images/ws_logo.png" />
                             </a>
 
