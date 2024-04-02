@@ -19,7 +19,9 @@ export const MainLayout = () => {
             {location.pathname !== '/our_fleet' && (
                 <div className={className}>
                     <div className='header-container'>
-                        <img className='logo-header' src={imgSrc} />
+                        <a href='/'>
+                            <img className='logo-header' src={imgSrc} />
+                        </a>
                         <div className='hamburgericon-container'>
                             <HamburgerIcon onClick={handleHamburgerClick} />
                         </div>

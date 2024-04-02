@@ -897,6 +897,8 @@ button {
   }
 
   .social-networks-conteiner {
+    justify-content: center;
+
     >img {
       width: 20px;
       height: auto;
@@ -1330,4 +1332,19 @@ button {
   cursor: pointer;
   font-size: 24px;
   color: #333;
+}
+
+.email_container {
+  color: #F5F6F7;
+  text-decoration: none;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.wslogo {
+  width: 42px;
+}
+
+.instlogo {
+  width: 42px;
 }
