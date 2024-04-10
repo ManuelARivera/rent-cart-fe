@@ -8,6 +8,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { CreateService } from '../services/createService';
 import { GoodyeModal } from './goodyeModal';
+import InfoIcon from '@mui/icons-material/Info';
 
 export const SetServiceDataForm = ({ goBackOneStep, closeModal }) => {
     const { value } = useFormContext()
@@ -175,11 +176,13 @@ export const SetServiceDataForm = ({ goBackOneStep, closeModal }) => {
                                             onClick={handleChangePrice}
                                         />
                                     }
-                                    title="Esto es un mensaje de ejemplo"
+
                                     label={
-                                        <div>
-                                            Apartar
-                                            <span title="Title de la image">🗯</span>
+                                        <div style={{ display: 'flex', gap: '5px' }}>
+                                            <div> Apartar </div>
+                                            <div>  <span title={`Podrá apartar el auto por un monto de $150.\n Deberá pagar el resto una vez se reciba el auto.\n Si al llegar la fecha acordada el alquilante no aparece,\n este monto se quedará con la administración.`}>
+                                                <InfoIcon style={{ color: '#15C1FF' }} />
+                                            </span> </div>
                                         </div>
                                     }
                                 />
