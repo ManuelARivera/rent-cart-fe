@@ -143,11 +143,11 @@ export const SetServiceDataForm = ({ goBackOneStep, closeModal }) => {
                         </div>
                         <div className='day-setservicedataform-contaier details shadow-container'>
                             <h3>Pecio</h3>
-                            <div>{price}</div>
+                            <div>$ {price}</div>
                         </div>
                         <div className='price-setservicedataform-contaier details shadow-container'>
                             <h3>Días</h3>
-                            <div>$ {days}</div>
+                            <div>{days}</div>
 
                         </div>
                         <div className='total-price-setservicedataform-contaier details shadow-container'>

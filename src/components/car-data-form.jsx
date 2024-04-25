@@ -17,7 +17,7 @@ export const CarDataForm = ({ goBackOneStep, goToNextStep }) => {
         update
     } = useFormContext()
 
-    const { idcrr, setidcrr, cars } = useAppConext()
+    const { idcrr, cars } = useAppConext()
     const [formData, setFormData] = useState({
         idCar: idcrr || '',
         ...value

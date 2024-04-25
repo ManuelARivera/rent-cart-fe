@@ -9,7 +9,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 
 export const Home = () => {
-    const { handleHamburgerClickOff } = useAppConext()
+    const { handleHamburgerClickOff } = useAppConext();
     const [isShown, setIsShown] = useState(false);
 
     const showModal = () => setIsShown(true)

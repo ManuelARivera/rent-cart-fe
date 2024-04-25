@@ -6,7 +6,6 @@ export const AppContext = createContext({})
 
 export const AppContextProvider = ({ children }) => {
     const { cars } = useCars()
-    console.log(cars)
     const [isNavVisible, setNavVisible] = useState(false);
     const [idcrr, setidcrr] = useState('');
 
