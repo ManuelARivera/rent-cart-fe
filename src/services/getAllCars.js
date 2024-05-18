@@ -6,6 +6,7 @@ export const getAllCars = async () => {
     headers: { "Content-Type": "application/json" }
   }
   const response = await fetch(`${BE_URL}/car`, options)
+
   if (!response.ok) return []
   return response.json()
 }

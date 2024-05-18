@@ -9,35 +9,46 @@ export const Our_fleet = () => {
     const { handleHamburgerClick, handleHamburgerClickOff, isNavVisible, setidcrr, cars } = useAppConext()
     const [selectedCarTypes, setselectedCarTypes] = useState('');
     const [selectedTransmission, setselectedTransmission] = useState('');
+    const [selectedFuleTypes, setselectedFuleType] = useState('');
 
     const [isShown, setIsShown] = useState(false);
 
     const showModal = () => setIsShown(true)
     const hideModal = () => setIsShown(false)
 
-    const { carTypes, transmissions } = useMemo(
+    console.log(cars)
+
+    const { carTypes, transmissions, fuelTypes } = useMemo(
         () => {
-            const addedCarTypes = {}
-            const addedTransmissions = {}
-            const transmissions = []
-            const carTypes = []
+            const addedCarTypes = {};
+            const addedTransmissions = {};
+            const addedFuelTypes = {};
+            const carTypes = [];
+            const transmissions = [];
+            const fuelTypes = [];
 
             for (const car of cars) {
                 if (!addedTransmissions[car.transmission]) {
-                    transmissions.push(car.transmission)
-                    addedTransmissions[car.transmission] = 1
+                    transmissions.push(car.transmission);
+                    addedTransmissions[car.transmission] = 1;
                 }
 
                 if (!addedCarTypes[car.carType]) {
-                    carTypes.push(car.carType)
-                    addedCarTypes[car.carType] = 1
+                    carTypes.push(car.carType);
+                    addedCarTypes[car.carType] = 1;
+                }
+
+                if (!addedFuelTypes[car.fule]) {
+                    fuelTypes.push(car.fule);
+                    addedFuelTypes[car.fule] = 1;
                 }
             }
 
             return {
                 carTypes,
-                transmissions
-            }
+                transmissions,
+                fuelTypes
+            };
         },
         [cars]
     );
@@ -45,9 +56,10 @@ export const Our_fleet = () => {
     const filteredCars = useMemo(() => cars.filter(car => {
         const carTypeMatch = selectedCarTypes === '' || car.carType === selectedCarTypes;
         const transmissionMatch = selectedTransmission === '' || car.transmission === selectedTransmission;
+        const fuleType = selectedFuleTypes === '' || car.fule === selectedFuleTypes;
 
-        return carTypeMatch && transmissionMatch;
-    }), [cars, selectedCarTypes, selectedTransmission])
+        return carTypeMatch && transmissionMatch && fuleType;
+    }), [cars, selectedCarTypes, selectedTransmission, selectedFuleTypes])
 
     const handleOnclick = (e) => {
         setidcrr(e)
@@ -131,6 +143,32 @@ export const Our_fleet = () => {
                                         onChange={() => setselectedTransmission(Transmission)}
                                     />
                                     {Transmission}
+                                </label>
+                            ))}
+                        </form>
+
+                        <form className='radiobuttons-container radiobuttons-container-transmission'>
+                            <h3>Combustible</h3>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="fule"
+                                    value=""
+                                    checked={selectedFuleTypes === ''}
+                                    onChange={() => setselectedFuleType('')}
+                                />
+                                Todas
+                            </label>
+                            {fuelTypes.map((fule, index) => (
+                                <label key={index}>
+                                    <input
+                                        type="radio"
+                                        name="fule"
+                                        value={fule}
+                                        checked={selectedFuleTypes === fule}
+                                        onChange={() => setselectedFuleType(fule)}
+                                    />
+                                    {fule}
                                 </label>
                             ))}
                         </form>
