@@ -1,4 +1,5 @@
 import React from 'react'
+const BE_URL = import.meta.env.VITE_BE_BASE_URL
 
 export const CreateContactaReview = async (data) => {
     const options = {
@@ -8,6 +9,6 @@ export const CreateContactaReview = async (data) => {
         },
         body: JSON.stringify(data)
     }
-    const response = await fetch('http://localhost:3000/contactreview', options)
+    const response = await fetch(`${BE_URL}/contactreview`, options)
     return response.json()
 }
