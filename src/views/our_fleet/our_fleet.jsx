@@ -57,8 +57,11 @@ export const Our_fleet = () => {
         const carTypeMatch = selectedCarTypes === '' || car.carType === selectedCarTypes;
         const transmissionMatch = selectedTransmission === '' || car.transmission === selectedTransmission;
         const fuleType = selectedFuleTypes === '' || car.fule === selectedFuleTypes;
+        const availability = car.availability !== false
 
-        return carTypeMatch && transmissionMatch && fuleType;
+
+
+        return carTypeMatch && transmissionMatch && fuleType && availability;
     }), [cars, selectedCarTypes, selectedTransmission, selectedFuleTypes])
 
     const handleOnclick = (e) => {

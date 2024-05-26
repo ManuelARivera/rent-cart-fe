@@ -3,7 +3,10 @@ import React from 'react'
 export const Contract = () => {
     return (
         <div className="contract-container">
-            <h2 className="contract-title">Contract Terms and Conditions</h2>
+            <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '30px' }}>
+                <img src='/images/logo.png' width={500} />
+            </div>
+            <h2 className="contract-title">Términos y Condiciones del Contrato</h2>
             <p>HE LEÍDO TODOS LOS ARTÍCULOS DE ESTE CONTRATO Y ACEPTO LOS TÉRMINOS Y CONDICIONES QUE EN EL MISMO SE INDICAN.</p>
             <p>El arrendatario acepta los términos y condiciones de este contrato de alquiler incluidos a continuación. Solo los conductores indicados en este contrato están autorizados a conducir el vehículo. El arrendador no es responsable de los hechos ilícitos contenidos en el vehículo arrendado. Si el vehículo no es entregado en la fecha y lugar indicados, y se extiende la fecha estipulada de retorno sin notificación, las autoridades policiales serán notificadas.</p>
 
@@ -19,7 +22,7 @@ export const Contract = () => {
             <h4>Artículo 3: Prohibiciones en el uso del Vehículo/Restricciones</h4>
             <p>El uso inapropiado del vehículo libera al ARRENDADOR de cualquier tipo de responsabilidad frente al ARRENDATARIO y/o terceras personas. Este uso inapropiado del vehículo también invalidará cualquier renuncia de responsabilidad contratada o no por el ARRENDATARIO. El ARRENDATARIO se compromete a no utilizar ni permitir el uso del vehículo en las siguientes circunstancias: A) Por persona alguna que no sea el conductor principal o los conductores adicionales registrados previamente en el presente contrato. B) Para transporte público. C) Para remolcar cualquier otro vehículo. D) Para participar en carreras de competición, pruebas de velocidad, clases de manejo o eventos similares. E) Para cualquier propósito ilegal. F) Para causar daños intencionalmente al vehículo.</p>
 
-            <p className="signature">Este contrato debe ser firmado físicamente antes de su validez.</p>
+            <p className="signature">Nota: Este contrato debe ser firmado físicamente antes de su validez.</p>
         </div>
     )
 }

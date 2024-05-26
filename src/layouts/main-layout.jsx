@@ -16,7 +16,7 @@ export const MainLayout = () => {
 
     return (
         <>
-            {location.pathname !== '/our_fleet' && (
+            {location.pathname !== '/our_fleet' && location.pathname !== '/contract' && (
                 <div className={className}>
                     <div className='header-container'>
                         <a href='/'>
