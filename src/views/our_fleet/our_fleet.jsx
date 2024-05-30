@@ -16,8 +16,6 @@ export const Our_fleet = () => {
     const showModal = () => setIsShown(true)
     const hideModal = () => setIsShown(false)
 
-    console.log(cars)
-
     const { carTypes, transmissions, fuelTypes } = useMemo(
         () => {
             const addedCarTypes = {};

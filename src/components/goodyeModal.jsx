@@ -1,7 +1,6 @@
 import React from 'react'
 
 export const GoodyeModal = ({ isOpen, onClose, name, lastname, email }) => {
-    console.log(isOpen)
     if (isOpen) return null;
     return (
         <div className="goodbye-modal">

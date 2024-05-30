@@ -39,8 +39,6 @@ export const SetServiceDataForm = ({ goBackOneStep, closeModal }) => {
         email: '',
     })
 
-
-
     const createOrder = (data, actions) => {
 
         return actions.order.create({
@@ -71,10 +69,6 @@ export const SetServiceDataForm = ({ goBackOneStep, closeModal }) => {
 
     const onApprove = async (data, actions) => {
         return actions.order.capture().then(async (details) => {
-
-            console.log(details.payer.name.given_name)
-            console.log(details.payer.name.surname)
-            console.log(details.payer.address.country_code)
 
             const body = {
                 "createContactDto": {
@@ -108,15 +102,7 @@ export const SetServiceDataForm = ({ goBackOneStep, closeModal }) => {
                 },
             }
 
-            console.log(details)
             const resp = await CreateService(value.idCar, body)
-            /*console.log(resp.uniqueCode)
-            console.log(resp.paypal.id)
-            console.log(resp.paypal.payer.email_address)
-            console.log(resp.paypal.payer.name)
-            console.log(resp.paypal.payer.name.given_name)
-            console.log(resp.paypal.payer.name.surname)*/
-            console.log(resp)
 
             if (details && resp) {
                 setShowModal(false);
